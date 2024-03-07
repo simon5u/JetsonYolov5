@@ -39,11 +39,11 @@ Numpy comes pre installed with Jetpack, so make sure you uninstall it first and 
 
 Install PyCuda
 =============
-We need to first export few paths
+We need to first export few paths. To install tensorrt into python3, you can refer to https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#maclearn-net-repo-install.
 
 	export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
 	export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
- 	sudo apt-get install python3-libnvinfer (to install tensorrt into python3, https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#maclearn-net-repo-install)
+ 	sudo apt-get install python3-libnvinfer
 	python3 -m pip install pycuda --user
 	
 
