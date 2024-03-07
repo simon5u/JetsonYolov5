@@ -17,9 +17,9 @@ Install Libraries
 =============
 Please install below libraries::
 
-    $ sudo apt-get update
-	$ sudo apt-get install -y liblapack-dev libblas-dev gfortran libfreetype6-dev libopenblas-base libopenmpi-dev libjpeg-dev zlib1g-dev
-	$ sudo apt-get install -y python3-pip
+    	sudo apt-get update
+	sudo apt-get install -y liblapack-dev libblas-dev gfortran libfreetype6-dev libopenblas-base libopenmpi-dev libjpeg-dev zlib1g-dev
+	sudo apt-get install -y python3-pip
 	
 
 Install below python packages
