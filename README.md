@@ -18,7 +18,7 @@ Install Libraries
 Please install below libraries::
 
     sudo apt-get update
-	sudo apt-get install -y liblapack-dev libblas-dev gfortran libfreetype6-dev libopenblas-base libopenmpi-dev libjpeg-dev zlib1g-dev
+	sudo apt-get install -y liblapack-dev libblas-dev libatlas-base-dev gfortran libfreetype6-dev libopenblas-base libopenmpi-dev libjpeg-dev zlib1g-dev
 	sudo apt-get install -y python3-pip
 	
 
@@ -74,6 +74,7 @@ Generate wts file from pt file
 Yolov5s.pt and Yolov5n.pt are already provided in the repo. But if you want you can download any other version of the yolov5 model. Then run below command to convert .pt file into .wts file 
 
 	cd JetsonYoloV5
+ 	wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m.pt
 	python3 gen_wts.py -w yolov5m.pt -o yolov5m.wts
 	
 Make
@@ -90,13 +91,15 @@ Create a build directory inside yolov5. Copy and paste generated wts file into b
 Build Engine file 
 =============
 
-    $ ./yolov5_det -s yolov5m.wts yolov5m.engine m
+    cd yolov5/src
+    cat config.h
+    ./yolov5_det -s yolov5m.wts yolov5m.engine m
 	
 
 Testing Engine file 
 =============
 
-	$ ./yolov5_det -d yolov5m.engine ../images
+	./yolov5_det -d yolov5m.engine ../images
 	
 This will do inferencing over images and output will be saved in build directory.
 
