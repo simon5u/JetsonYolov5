@@ -17,7 +17,7 @@ Install Libraries
 =============
 Please install below libraries::
 
-    	sudo apt-get update
+    sudo apt-get update
 	sudo apt-get install -y liblapack-dev libblas-dev gfortran libfreetype6-dev libopenblas-base libopenmpi-dev libjpeg-dev zlib1g-dev
 	sudo apt-get install -y python3-pip
 	
@@ -26,22 +26,25 @@ Install below python packages
 =============
 Numpy comes pre installed with Jetpack, so make sure you uninstall it first and then confirm if it's uninstalled or not. Then install below packages:
 
-    $ numpy==1.19.0
-	$ pandas==0.22.0
-	$ Pillow==8.4.0
-	$ PyYAML==3.12
-	$ scipy==1.5.4
-	$ psutil
-	$ tqdm==4.64.1
-	$ imutils
+    numpy==1.19.0
+	pandas==0.22.0
+	Pillow==8.4.0
+	PyYAML==3.12
+	scipy==1.5.4
+	psutil
+	tqdm==4.64.1
+	imutils
+
+ You can put all these libraries into a req.txt. Then run, pip3 install -r req.txt
 
 Install PyCuda
 =============
 We need to first export few paths
 
-	$ export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-	$ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-	$ python3 -m pip install pycuda --user
+	export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+	export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+ 	sudo apt-get install python3-libnvinfer (to install tensorrt into python3, https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#maclearn-net-repo-install)
+	python3 -m pip install pycuda --user
 	
 
 Install Seaborn
