@@ -1,13 +1,15 @@
 Running YoloV5 with TensorRT Engine on Jetson Orin Nano 8GB.
 ==========
 
-This repository contains step by step guide to build and convert YoloV5 model into a TensorRT engine on Jetson Orin Nano 8GB.
+This repository contains step by step guide to build and convert YoloV5s model into a TensorRT engine on Jetson Orin Nano 8GB.
 
 Please install Jetpack OS version 5.1.1 as mentioned by Nvidia and follow below steps. Please follow each steps exactly mentioned in the video links below :
 
 Build YoloV5 TensorRT Engine on Jetson Nano: https://www.youtube.com/watch?v=ErWC3nBuV6k
 
 Object Detection YoloV5 TensorRT Engine on Jetson Nano: https://www.youtube.com/watch?v=-Vu65N1NRWw
+
+Please take note that this repo only work for yolov5s, i got some error when try to convert yolov5m from wts to engine, but you can refer to https://github.com/wang-xinyu/tensorrtx/tree/yolov5-v7.0/yolov5 for futher exploration.
 
 Jetson Xavier:
 
@@ -74,8 +76,8 @@ Generate wts file from pt file
 Yolov5s.pt and Yolov5n.pt are already provided in the repo. But if you want you can download any other version of the yolov5 model. Then run below command to convert .pt file into .wts file 
 
 	cd JetsonYoloV5
- 	wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m.pt
-	python3 gen_wts.py -w yolov5m.pt -o yolov5m.wts
+ 	wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
+	python3 gen_wts.py -w yolov5s.pt -o yolov5s.wts
 	
 Make
 =============
@@ -84,7 +86,7 @@ Create a build directory inside yolov5. Copy and paste generated wts file into b
 	cd yolov5/
 	mkdir build
 	cd build
-	cp ../../yolov5m.wts .
+	cp ../../yolov5s.wts .
 	cmake ..
 	make 
 	
@@ -93,13 +95,13 @@ Build Engine file
 
     cd yolov5/src
     cat config.h
-    ./yolov5_det -s yolov5m.wts yolov5m.engine m
+    ./yolov5_det -s yolov5s.wts yolov5s.engine s
 	
 
 Testing Engine file 
 =============
 
-	./yolov5_det -d yolov5m.engine ../images
+	./yolov5_det -d yolov5s.engine ../images
 	
 This will do inferencing over images and output will be saved in build directory.
 
