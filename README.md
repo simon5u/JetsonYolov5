@@ -55,14 +55,15 @@ Install Seaborn
 Install torch & torchvision
 =============
 
-	$ wget https://nvidia.box.com/shared/static/fjtbno0vpo676a25cgvuqc1wty0fkkg6.whl -O torch-1.10.0-cp36-cp36m-linux_aarch64.whl
-	$ pip3 install torch-1.10.0-cp36-cp36m-linux_aarch64.whl
-	$ git clone --branch v0.11.1 https://github.com/pytorch/vision torchvision
-	$ cd torchvision
-	$ sudo python3 setup.py install 
+	wget https://github.com/KumaTea/pytorch-aarch64/releases/download/v1.11.0/torch-1.11.0-cp38-cp38-linux_aarch64.whl
+	pip3 install torch-1.11.0-cp38-cp38-linux_aarch64.whl
+	git clone --branch v0.13.0 https://github.com/pytorch/vision torchvision
+	sudo chmod -R 777 /usr/local/lib/python3.8/dist-packages/ 
+ 	cd torchvision
+	python3 setup.py install 
 	
 ### Not required but good library
-sudo python3 -m pip install -U jetson-stats==3.1.4
+python3 -m pip install -U jetson-stats==3.1.4
 
 This marks the installation of all the required libraries.
 
@@ -72,30 +73,30 @@ Generate wts file from pt file
 =============
 Yolov5s.pt and Yolov5n.pt are already provided in the repo. But if you want you can download any other version of the yolov5 model. Then run below command to convert .pt file into .wts file 
 
-	$ cd JetsonYoloV5
-	$ python3 gen_wts.py -w yolov5s.pt -o yolov5s.wts
+	cd JetsonYoloV5
+	python3 gen_wts.py -w yolov5m.pt -o yolov5m.wts
 	
 Make
 =============
 Create a build directory inside yolov5. Copy and paste generated wts file into build directory and run below commands. If using custom model, make sure to update kNumClas in yolov5/src/config.h
 
-	$ cd yolov5/
-	$ mkdir build
-	$ cd build
-	$ cp ../../yolov5s.wts .
-	$ cmake ..
-	$ make 
+	cd yolov5/
+	mkdir build
+	cd build
+	cp ../../yolov5m.wts .
+	cmake ..
+	make 
 	
 Build Engine file 
 =============
 
-    $ ./yolov5_det -s yolov5s.wts yolov5s.engine s
+    $ ./yolov5_det -s yolov5m.wts yolov5m.engine m
 	
 
 Testing Engine file 
 =============
 
-	$ ./yolov5_det -d yolov5s.engine ../images
+	$ ./yolov5_det -d yolov5m.engine ../images
 	
 This will do inferencing over images and output will be saved in build directory.
 
